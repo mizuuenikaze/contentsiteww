@@ -4,10 +4,9 @@ var config = require('clientconfig');
 var Router = require('./router');
 var MainView = require('./views/main');
 var Me = require('./models/me');
-var Features = require('./models/features');
 var domReady = require('domready');
 var browser = require('detect-browser');
-var lazysizes = require('./lazysizes');
+var scriptLoad = require('scriptloader');
 
 // attach our app to `window` so we can
 // easily access it from the console.
@@ -18,7 +17,6 @@ app.extend({
 	contextPath: window.location.pathname.match(/(\/[^\/]+){1}/, '')[0] + '/',
     me: new Me(),
 	apiBaseUri: config.apiUrl,
-    featureCollection: new Features(undefined, {url: config.apiUrl}),
     router: new Router(),
     // This is where it all starts
     init: function() {
@@ -55,6 +53,10 @@ app.extend({
 		}
 
 		return { useXDR: useXDR, headers: headers, xhrFields: xhrFields };
+	},
+	injectScripts: function() {
+		// can't take advantage of cdn in this case.  Must be used in required fashion
+		//scriptLoad(document, "https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.10/bootstrap-native.js");
 	}
 });
 

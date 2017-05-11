@@ -13,7 +13,7 @@ var config = require('clientconfig');
 
 
 module.exports = View.extend({
-    template: templates.portalbody,
+    template: templates.body,
     autoRender: true,
     initialize: function () {
         // this marks the correct nav item selected
@@ -34,7 +34,7 @@ module.exports = View.extend({
         this.pageSwitcher = new ViewSwitcher(this.queryByHook('page-container'), {
             show: function (newView, oldView) {
                 // it's inserted and rendered for me
-                document.title = _.result(newView, 'pageTitle') || 'Portal';
+                document.title = _.result(newView, 'pageTitle') || 'massage';
                 document.scrollTop = 0;
 
                 // add a class specifying it's active
@@ -46,7 +46,8 @@ module.exports = View.extend({
         });
 
         // setting a favicon for fun (note, it's dynamic)
-        setFavicon('/favicon.ico');
+        setFavicon('/favicon_m.ico');
+		app.injectScripts();
         return this;
     },
 
@@ -56,6 +57,9 @@ module.exports = View.extend({
 
         // mark the correct nav item selected
         this.updateActiveNav();
+
+		// refresh bootstrap objects
+		var bootstrapNativeInit = require('bootstrap.native');
     },
 
     // Handles all `<a>` clicks in the app not handled

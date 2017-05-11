@@ -1,34 +1,17 @@
 var app = require('ampersand-app');
 var Router = require('ampersand-router');
-var HomePage = require('./pages/home');
-var FeaturesPage = require('./pages/features');
-var ContactPage = require('./pages/contact');
+var MassagePage = require('./pages/massage');
 
 
 module.exports = Router.extend({
     routes: {
-        'muk/': 'home',
-        'muk/features': 'features',
-        'muk/contact': 'contact',
+        'massage/': 'home',
         '(*path)': 'catchAll'
     },
 
     // ------- ROUTE HANDLERS ---------
     home: function () {
-        app.trigger('page', new HomePage({
-            model: app.me
-        }));
-    },
-
-    features: function () {
-        app.trigger('page', new FeaturesPage({
-            model: app.me,
-            collection: app.featureCollection
-        }));
-    },
-
-    contact: function () {
-        app.trigger('page', new ContactPage({
+        app.trigger('page', new MassagePage({
             model: app.me
         }));
     },

@@ -84,8 +84,10 @@ var allStylesheets = [
     fixPath('stylesheets/app.css'),
 ];
 
+var allLibraries = [];
+
 if (config.isDev) {
-    allStylesheets.unshift(fixPath('stylesheets/bootstrap.css'));
+	allStylesheets.unshift(fixPath('stylesheets/bootstrap.css'));
 }
 
 new Moonboots({
@@ -94,8 +96,7 @@ new Moonboots({
         cssFileName: 'massage',
         main: fixPath('client/app.js'),
         developmentMode: config.isDev,
-        libraries: [
-        ],
+        libraries: allLibraries,
         stylesheets: allStylesheets,
         browserify: {
             debug: config.isDev
