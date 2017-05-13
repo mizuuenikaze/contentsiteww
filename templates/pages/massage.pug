@@ -1,48 +1,70 @@
 section.page.home
-  // jumbotron
+  //- jumbotron
   div.jumbotron
-    div.container
-      p &nbsp;
-      // carousel
-      div#myCarousel.carousel.slide(data-ride="carousel", data-interval="5000")
-        ol.carousel-indicators
-          li.active(data-target="#myCarousel", data-slide-to="0")
-          li(data-target="#myCarousel", data-slide-to="1")
-          li(data-target="#myCarousel", data-slide-to="2")
-        div.carousel-inner(role="listbox")
-          div.item.active
-            img(src="/images/sun.jpg")
-            div.carousel-caption
-              h3 rise
-          div.item
-            img(src="/images/muk.jpg")
-          div.item
-            img(src="/images/moon.jpg")
-            div.carousel-caption
-              h3 relax
-    
-        a.left.carousel-control(href="#myCarousel", role="button", data-slide="prev")
-          span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
-          span.sr-only Previous
-        a.right.carousel-control(href="#myCarousel", role="button", data-slide="next")
-          span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
-          span.sr-only Next
-      // intro text
-      p &nbsp;
-      p Reflect on how you would like to feel.  Reconstitute with massage.  I come to you to maximize comfort, convenience, and effectiveness.
+    p &nbsp;
+    //- carousel
+    div#myCarousel.carousel.slide(data-ride="carousel", data-interval="10000")
+      ol.carousel-indicators
+        li.active(data-target="#myCarousel", data-slide-to="0")
+        li(data-target="#myCarousel", data-slide-to="1")
+        li(data-target="#myCarousel", data-slide-to="2")
+      div.carousel-inner(role="listbox")
+        div.item.fade-box.active
+          img.lazyload.blur-up(data-src="holderjs/200x150?theme=gray&auto=yes", data-sizes="auto",
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+            data-srcset="holderjs 200w, \
+            /images/muk_300w.jpg 300w, \
+            /images/muk_600w.jpg 600w, \
+            /images/muk_900w.jpg 900w")
+          div.carousel-caption
+            p
+              ul
+                li Reflect on how you would like to feel.
+                li Reconstitute with massage.
+                li I come to you to maximize comfort, convenience, and effectiveness.
+        div.item
+          img.lazyload.blur-up(data-src="holderjs/200x150?theme=gray&auto=yes", data-sizes="auto",
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+            data-srcset="holderjs 200w, \
+            /images/sun_300w.jpg 300w, \
+            /images/sun_600w.jpg 600w, \
+            /images/sun_900w.jpg 900w")
+          div.carousel-caption
+            h1 It's your time...
+        div.item
+          img.lazyload.blur-up(data-src="holderjs/200x150?theme=gray&auto=yes", data-sizes="auto",
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+            data-srcset="holderjs 200w, \
+            /images/moon_300w.jpg 300w, \
+            /images/moon_600w.jpg 600w, \
+            /images/moon_900w.jpg 900w")
+          div.carousel-caption
+            h1 ...to relax
 
-  // grid content
+      a.left.carousel-control(href="#myCarousel", role="button", data-slide="prev")
+        span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+        span.sr-only Previous
+      a.right.carousel-control(href="#myCarousel", role="button", data-slide="next")
+        span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+        span.sr-only Next
+    //- intro text
+    p &nbsp;
+
+  //- grid content
   div.container
     div.row
       div.col-sm-4
         h3 Style
+        hr
         p I am always learning and honing my craft to provide a satisfying experience.  The most important part of that is listening to your goals to formulate a targeted session using techniques that can include swedish, sports massage, deep tissue, thai, deep massage, and orthopedic protocols.
         p Secondly, working both physically and spiritually to create a space full of peace and acceptance is key.
       div.col-sm-4
         h3 Logistics
+        hr
         p I provide the table, sheets, oils, creams, music, and whatever else I can lug around and you have your choice of location.  I come to you!  Don't be shy to ask for times outside of business hours.  Schedule a time that is convenient for you.
       div.col-sm-4
         h3 Contact
+        hr
         p
           | Please do contact me via email at
           |

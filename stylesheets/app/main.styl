@@ -7,26 +7,38 @@
 
 // your styles here:
 body
-  color: $text
+  color $text
+  font-size $fontMD
 
-.logo
-  float: left
-  width: 100px
-  height: 50px
-  display: inline-block
-  text-indent: -9999em
-  background: url('/images/logo.png') no-repeat top
-  background-size: contain
+.carousel
+  background-color #a59ad2
+  color $carouselText
 
-div.rule
-  margin-top: 2em
-  margin-bottom: 2em
-  background: linear-gradient(160deg, #abb, rgba(0,0,0,0) 80%)
+.carousel-inner
+  > .item
+    > img
+      margin 0 auto
+      max-height 650px
+      min-width auto
+    > .carousel-caption
+      text-align left
+      font-size $fontLG
 
-div.attributions
-  text-align: left;
+.blur-up
+  -webkit-filter blur(5px)
+  filter blur(5px)
+  transition
+    filter 400ms ease 100ms
+    -webkit-filter 400ms ease 100ms
 
-span.label
-  margin-right: 1em
-  margin-left: 1em
+.blur-up.lazyloaded
+  -webkit-filter blur(0)
+  filter blur(0)
 
+.fade-box .lazyload
+.fade-box .lazyloading
+  opacity 0
+  transition opacity 400ms ease 100ms
+
+.fade-box img.lazyloaded
+  opacity 1

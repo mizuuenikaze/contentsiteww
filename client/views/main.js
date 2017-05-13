@@ -42,6 +42,9 @@ module.exports = View.extend({
 
                 // store an additional reference, just because
                 app.currentPage = newView;
+
+				// some modules don't see new elements
+				app.reInitModules();
             }
         });
 
@@ -57,9 +60,6 @@ module.exports = View.extend({
 
         // mark the correct nav item selected
         this.updateActiveNav();
-
-		// refresh bootstrap objects
-		var bootstrapNativeInit = require('bootstrap.native');
     },
 
     // Handles all `<a>` clicks in the app not handled
