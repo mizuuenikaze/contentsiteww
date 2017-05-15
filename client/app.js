@@ -9,10 +9,14 @@ var browser = require('detect-browser');
 var scriptLoad = require('scriptloader');
 
 // Defer lazysizes
-window.lazySizesConfig = { init: false, loadMode: 3 };
+window.lazySizesConfig = window.lazySizesConfig || {};
+window.lazySizesConfig.init = false;
+window.lazySizesConfig.customMedia = {
+	'--small': '(max-width: 480px)',
+	'--medium': '(max-width: 700px)',
+	'--large': '(max-width: 1400px)'
+}
 var lazysizes = require('./util/lazysizes');
-var holder = require('./util/holder');
-holder.run({domain: 'preempt'});
 
 // attach our app to `window` so we can
 // easily access it from the console.
@@ -65,17 +69,24 @@ app.extend({
 		var bootstrapNativeInit = require('bootstrap.native');
 
 		// check for new placeholders
-		holder.run({domain:'holderjs'});
-
-		// lazysizes is okay to run anytime except in this case
-		// where it has to run after holderjs the first time.
-		lazysizes.init();
+		//window.Holder.run();
 	},
 	injectScripts: function() {
 		// can't take advantage of cdn in this case.  Must be used in required fashion
 		//scriptLoad(document, 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.10/bootstrap-native.js');
+		
+		var hjs = document.getElementById('hjs');
 
-		// would like to do this to offload third party script from the main js bundle, but not finding good opportunities.
+		if (!hjs) {
+			scriptLoad(document,
+				'https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js',
+				function (err, scriptElement) {
+					window.Holder.addTheme('custom', { 'bg': '#afafaf', 'fg': '#cccccc', 'size': 14, 'font': 'GlyphiconHalflings', 'font-weight': 'normal'});
+
+					setTimeout(lazysizes.init, 1000);
+				}
+			);
+		}
 	}
 });
 

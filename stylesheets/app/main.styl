@@ -16,29 +16,20 @@ body
 
 .carousel-inner
   > .item
-    > img
+    img
+      display block
       margin 0 auto
       max-height 650px
-      min-width auto
+      min-height 150px
+      max-width 100%
+      min-width 25%
     > .carousel-caption
       text-align left
       font-size $fontLG
 
-.blur-up
-  -webkit-filter blur(5px)
-  filter blur(5px)
-  transition
-    filter 400ms ease 100ms
-    -webkit-filter 400ms ease 100ms
-
-.blur-up.lazyloaded
-  -webkit-filter blur(0)
-  filter blur(0)
-
-.fade-box .lazyload
-.fade-box .lazyloading
-  opacity 0
-  transition opacity 400ms ease 100ms
-
-.fade-box img.lazyloaded
+.lazyload
+.lazyloading
+  opacity 0.2
+.lazyloaded
   opacity 1
+  transition opacity 1s ease 0s
