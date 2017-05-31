@@ -22,7 +22,7 @@ var fixPath = function (pathString) {
 // -----------------
 // Configure express
 // -----------------
-app.use(serveStatic(fixPath('public')));
+app.use(serveStatic(fixPath('../public')));
 
 // we only want to expose tests in dev
 if (config.isDev) {
@@ -85,10 +85,6 @@ var allStylesheets = [
 ];
 
 var allLibraries = [];
-
-if (config.isDev) {
-	allStylesheets.unshift(fixPath('stylesheets/bootstrap.css'));
-}
 
 new Moonboots({
     moonboots: {

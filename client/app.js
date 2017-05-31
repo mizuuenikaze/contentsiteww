@@ -81,7 +81,8 @@ app.extend({
 			scriptLoad(document,
 				'https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js',
 				function (err, scriptElement) {
-					window.Holder.addTheme('custom', { 'bg': '#afafaf', 'fg': '#cccccc', 'size': 14, 'font': 'GlyphiconHalflings', 'font-weight': 'normal'});
+					scriptElement.id = 'hjs';
+					window.Holder.addTheme('custom', { 'bg': '#afafaf', 'fg': '#cccccc', 'size': 14, 'font': 'Glyphicons Halflings', 'font-weight': 'normal'});
 
 					setTimeout(lazysizes.init, 1000);
 				}
