@@ -1,4 +1,9 @@
 section.page.home
+  div.container
+    div.alert.alert-danger.hidden(role="alert" data-hook="error-message")
+      span.glyphicon.glyphicon-exclamation-sign(aria-hidden="true")
+      span.sr-only Error:
+
   //- jumbotron
   div.jumbotron
     p &nbsp;
@@ -18,7 +23,7 @@ section.page.home
               source(data-srcset="/images/muk_900w.jpg 900w")
               img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
             div.carousel-caption
-              h1 Reset and focus on how you would like to feel.
+              h1(data-hook="outl-a.a")
           div.item
             picture
               source(data-srcset="/images/sun_200w.jpg 200w, /images/sun_300w.jpg 300w" media="--small")
@@ -27,7 +32,7 @@ section.page.home
               source(data-srcset="/images/sun_900w.jpg 900w")
               img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
             div.carousel-caption
-              h1 Reconnect with your energy.  At your convenience, day...
+              h1(data-hook="outl-a.b") Reconnect with your energy.  At your convenience, day...
           div.item
             picture
               source(data-srcset="/images/moon_200w.jpg 200w, /images/moon_300w.jpg 300w" media="--small")
@@ -36,7 +41,7 @@ section.page.home
               source(data-srcset="/images/moon_900w.jpg 900w")
               img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
             div.carousel-caption
-              h1 ...or night.  Your goals are achievable.  Let's work together.
+              h1(data-hook="outl-a.c")
   
         a.left.carousel-control(href="#myCarousel", role="button", data-slide="prev")
           span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
@@ -46,9 +51,9 @@ section.page.home
           span.sr-only Next
       p &nbsp;
       ul
-        li I come to you to maximize comfort, convenience, and effectiveness.
-        li Each session is a progression of understanding and meeting your goals from injury recovery to relaxation or from a gentle foot rub to a full body massage.
-        li We work together to plan a session that is right for you, be it time, technique, or setting.
+        li(data-hook="outl-a.d.0")
+        li(data-hook="outl-a.d.1")
+        li(data-hook="outl-a.d.2")
   
   //- grid content
   div.container
@@ -59,31 +64,41 @@ section.page.home
           source(data-srcset="/images/pumpwater_150w.jpg 150w, /images/pumpwater_300w.jpg 300w" media="--medium")
           source(data-srcset="/images/pumpwater_300w.jpg 300w")
           img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        h3 Style
+        h3(data-hook="outl-b.a")
         hr
-        p I am always honing my craft to provide a satisfying experience.  The most important part of that is listening to your goals to formulate a targeted session using techniques that can include swedish, sports massage, deep tissue, thai, deep massage, and orthopedic protocols.
-        p Secondly, working both physically and spiritually to create a space full of peace and acceptance is key.
+        p(data-hook="outl-b.b")
+        p(data-hook="outl-b.c")
       div.col-sm-4
         picture
           source(data-srcset="/images/rocks_64w.jpg 64w, /images/rocks_150w.jpg 150w" media="--small")
           source(data-srcset="/images/rocks_150w.jpg 150w, /images/rocks_300w.jpg 300w" media="--medium")
           source(data-srcset="/images/rocks_300w.jpg 300w")
           img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        h3 Logistics
+        h3(data-hook="outl-c.a")
         hr
-        p I provide the table, sheets, oils, creams, music, and whatever else I can lug around and you have your choice of location.  I come to you!  Don't be shy to ask for times outside of business hours.  Schedule a time that is convenient for you.
+        p(data-hook="outl-c.b")
+        p(data-hook="outl-c.c")
+        div
+          picture
+            source(data-hook="outl-c.d")
+            img.lazyload(data-src="holder.js/149x41?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
+        div
+          picture
+            source(data-hook="outl-c.e")
+            img.lazyload(data-src="holder.js/100x26?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
       div.col-sm-4
         picture
           source(data-srcset="/images/dogmassage_64w.jpg 64w, /images/dogmassage_150w.jpg 150w" media="--small")
           source(data-srcset="/images/dogmassage_150w.jpg 150w, /images/dogmassage_300w.jpg 300w" media="--medium")
           source(data-srcset="/images/dogmassage_300w.jpg 300w")
           img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        h3 Contact
+        h3(data-hook="outl-d.a")
         hr
-        p
-          | Please do contact me via email at
-          |
-          a(href="mailto:fernandocano@winduponthewater.com") wind upon the water massage
-          |
-          | to schedule and for more details.
-        p Stay tuned for a contact number and enhancements such as online scheduling and payment.
+        p(data-hook="outl-d.b")
+        ul
+          li
+            span(data-hook="outl-e.a")
+            a(data-hook="outl-e.b")
+          li
+            span(data-hook="outl-e.c")
+            span(data-hook="outl-e.d")

@@ -1,31 +1,33 @@
-var AmpersandModel = require('ampersand-model');
+var AmpersandModel = require('./localStorageModel');
 
 
 module.exports = AmpersandModel.extend({
-    type: 'user',
-    props: {
-        id: ['string'],
-        firstName: ['string', true, ''],
-        lastName: ['string', true, ''],
-        username: ['string']
-    },
-	session: {
+	type: 'user',
+	props: {
+		id: ['string'],
+		firstName: ['string', true, ''],
+		lastName: ['string', true, ''],
+		username: ['string'],
 		token: ['string', true, '']
 	},
-    derived: {
-        fullName: {
-            deps: ['firstName', 'lastName'],
-            cache: true,
-            fn: function () {
-                return this.firstName + ' ' + this.lastName;
-            }
-        },
-        initials: {
-            deps: ['firstName', 'lastName'],
-            cache: true,
-            fn: function () {
-                return (this.firstName.charAt(0) + this.lastName.charAt(0)).toUpperCase();
-            }
-        }
-    }
+	session: {
+		hateoas: ['array'],
+		message: ['string']
+	},
+	derived: {
+		fullName: {
+			deps: ['firstName', 'lastName'],
+			cache: true,
+			fn: function () {
+				return this.firstName + ' ' + this.lastName;
+			}
+		},
+		initials: {
+			deps: ['firstName', 'lastName'],
+			cache: true,
+			fn: function () {
+				return (this.firstName.charAt(0) + this.lastName.charAt(0)).toUpperCase();
+			}
+		}
+	}
 });

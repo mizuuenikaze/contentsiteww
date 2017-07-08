@@ -4,19 +4,19 @@ var MassagePage = require('./pages/massage');
 
 
 module.exports = Router.extend({
-    routes: {
-        'massage/': 'home',
-        '(*path)': 'catchAll'
-    },
+	routes: {
+	'massage/': 'home',
+	'(*path)': 'catchAll'
+	},
 
-    // ------- ROUTE HANDLERS ---------
-    home: function () {
-        app.trigger('page', new MassagePage({
-            model: app.me
-        }));
-    },
+	// ------- ROUTE HANDLERS ---------
+	home: function () {
+		app.trigger('page', new MassagePage({
+			model: app.pageContext
+		}));
+	},
 
-    catchAll: function () {
-        this.redirectTo(app.contextPath + '');
-    }
+	catchAll: function () {
+		this.redirectTo(app.contextPath + '');
+	}
 });
