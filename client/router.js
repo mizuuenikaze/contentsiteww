@@ -5,8 +5,8 @@ var MassagePage = require('./pages/massage');
 
 module.exports = Router.extend({
 	routes: {
-	'massage/': 'home',
-	'(*path)': 'catchAll'
+		'massage/': 'home',
+		'(*path)': 'catchAll'
 	},
 
 	// ------- ROUTE HANDLERS ---------
