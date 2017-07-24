@@ -29,7 +29,6 @@ app.extend({
 	debugMode: config.debugMode,
 	gaua: config.gaua,
 	router: new Router(),
-	bootstrapComponents: {},
 	// This is where it all starts
 	init: function() {
 		this.pageContext = new PageContext();
@@ -100,33 +99,13 @@ app.extend({
 
 		return _.merge(conf, options);
 	},
-	reInitModules: function() {
-		// GA
-		window.ga('set', 'page', this.router.history.root + this.router.history.getFragment());
-		window.ga('send', 'pageview');
-
-		if (window.Holder) {
-			window.Holder.run();
-		}
-	},
-	thirdPartyWait: function () {
-		if (this.injectScripts) {
-			this.injectScripts();
-		}
-
-		window.app.trigger('externalReady');
-	},
 	injectScripts: function () {
-		if (this.scriptsInjected) {
-			return;
-		}
-
 		var thisApp = this;
 
 		// GA
 		window['GoogleAnalyticsObject'] = 'ga';
 		window['ga'] = window['ga'] | function () {
-			(window['ga'].q = window['ga'].q | []).push(arguments)
+			(window['ga'].q = window['ga'].q | []).push(arguments);
 		};
 		window['ga'].l = 1 * new Date();
 
@@ -136,29 +115,55 @@ app.extend({
 			scriptLoad(document,
 				'https://www.google-analytics.com/analytics.js',
 				function (err, scriptElement) {
-					scriptElement.id = 'gaScript';
-					window.ga('create', thisApp.gaua, 'auto');
+					if (err) {
+						console.err('GA failed to load.');
+						console.err(err.message);
+					} else {
+						scriptElement.id = 'gaScript';
+						window.ga('create', thisApp.gaua, 'auto');
+						thisApp.trigger('googleAnalytics');
+					}
 				}
 			);
 		}
 
-		this.bootstrapComponents = require('bootstrap.native');
+		// bootstrap components
+		var bsn = document.getElementById('bsn');
 
+		if (!bsn) {
+			scriptLoad(document,
+				'https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.12/bootstrap-native.min.js',
+				function (err, scriptElement) {
+					if (err) {
+						console.err('Bootstrap native failed to load.');
+						console.err(err.message);
+					} else {
+						scriptElement.id = 'bsn';
+						thisApp.trigger('bootstrapNative');
+					}
+				}
+			);
+		}
+
+		// placeholder images
 		var hjs = document.getElementById('hjs');
 
 		if (!hjs) {
 			scriptLoad(document,
 				'https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js',
 				function (err, scriptElement) {
-					scriptElement.id = 'hjs';
-					window.Holder.addTheme('custom', { 'bg': '#afafaf', 'fg': '#cccccc', 'size': 14, 'font': 'Glyphicons Halflings', 'font-weight': 'normal'});
-
-					setTimeout(lazysizes.init, 1000);
+					if (err) {
+						console.err('Holder js failed to load.');
+						console.err(err.message);
+					} else {
+						scriptElement.id = 'hjs';
+						window.Holder.addTheme('custom', { 'bg': '#afafaf', 'fg': '#cccccc', 'size': 14, 'font': 'Glyphicons Halflings', 'font-weight': 'normal'});
+						thisApp.trigger('holderJs');
+						setTimeout(lazysizes.init, 1000);
+					}
 				}
 			);
 		}
-
-		this.scriptsInjected = true;
 	}
 });
 
