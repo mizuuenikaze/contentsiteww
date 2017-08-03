@@ -38,7 +38,8 @@ module.exports = View.extend({
 		//key.deleteScope(this.cid);
 	},
 	postRender: function () {
-		return app.thirdPartyWait();
+		// override for special needs in extended pages
+		return true;
 	},
 	cmsFetch: function (options) {
 		if (this.cmsId) {

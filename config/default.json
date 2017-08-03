@@ -14,6 +14,7 @@
     },
     "client": {
         "apiUrl": "http://localhost:8082/proxied/api",
-        "debugMode": true
+        "debugMode": true,
+        "gaua": "UA-102674808-1"
     }
 }
