@@ -7,8 +7,8 @@ module.exports = AmpersandModel.extend({
 		id: ['string', 'true', ''],
 		page: 'object'
 	},
-	ajaxConfig: app.configureAjax,
 	initialize: function (attrs) {
+		this.ajaxConfig = app.configureAjax.bind(app);
 		this.urlRoot = app.apiBaseUri + '/v1/cms';
 	}
 });

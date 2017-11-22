@@ -41,6 +41,10 @@ module.exports = View.extend({
 		// override for special needs in extended pages
 		return true;
 	},
+	bindUiTo: function (external) {
+		//third party dom bindings
+		return true;
+	},
 	cmsFetch: function (options) {
 		if (this.cmsId) {
 			this.model.cms.clear();
@@ -49,5 +53,8 @@ module.exports = View.extend({
 		} else {
 			options.success(null, null, options);
 		}
+	},
+	handleError: function (error) {
+		app.currentPage.errorMessage = error.messsage;
 	}
 });
