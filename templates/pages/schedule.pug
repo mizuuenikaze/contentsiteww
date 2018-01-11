@@ -1,0 +1,36 @@
+section.page.schedule
+  div(data-hook="error-container")
+
+  //- jumbotron
+  div.jumbotron
+    p &nbsp;
+    div.container(id="calendar")
+      iframe(data-hook="calframe" src="https://calendar.google.com/calendar/b/1/embed?showPrint=0&showTabs=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=winduponthewater.com_7jugibjb4imd36m00ivfuadvgc%40group.calendar.google.com&color=%23865A5A&ctz=America%2FChicago")
+
+  //- grid content
+  div.container
+    div.row
+      div.col-sm-4
+        p &nbsp;
+      div.col-sm-4
+        form
+          button.btn.btn-primary(data-hook="request" autofocus="true" type="button") Send a request
+          button.invisible.btn.btn-warning(data-hook="check" type="button") Check on request
+      div.col-sm-4
+        p &nbsp;
+
+  div.modal.fade(role="dialog" data-hook="schedule")
+    div.modal-dialog(role="document")
+      div.modal-content
+        div.modal-header
+          h4.modal-title Schedule Request
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
+        div.modal-body
+          p.lead.text-center.bg-info Enter a day and time you would like to schedule a session.  This is only a request and it will be accepted or rejected according to availability.
+          form(data-hook="schedule-request-form")
+            fieldset(data-hook="field-container")
+            div.buttons
+              button.btn(data-hook="reset" type="submit") Send
+        div.modal-footer
+          button.btn.btn-default(type="button" data-dismiss="modal" data-hook="cancel") Cancel

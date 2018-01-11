@@ -1,12 +1,8 @@
 section.page.home
-  div.container
-    div.alert.alert-danger.hidden(role="alert" data-hook="error-message")
-      span.glyphicon.glyphicon-exclamation-sign(aria-hidden="true")
-      span.sr-only Error:
+  div(data-hook="error-container")
 
   //- jumbotron
   div.jumbotron
-    p &nbsp;
     div.container
       //- carousel
       div#myCarousel.carousel.slide(data-ride="carousel" data-interval="10000")
@@ -14,91 +10,103 @@ section.page.home
           li.active(data-target="#myCarousel" data-slide-to="0")
           li(data-target="#myCarousel" data-slide-to="1")
           li(data-target="#myCarousel" data-slide-to="2")
-        div.carousel-inner(role="listbox")
-          div.item.active
+        div.carousel-inner
+          div.carousel-item.active
             picture
               source(data-srcset="/images/muk_200w.jpg 200w, /images/muk_300w.jpg 300w" media="--small")
               source(data-srcset="/images/muk_300w.jpg 300w, /images/muk_600w.jpg 600w" media="--medium")
               source(data-srcset="/images/muk_600w.jpg 600w, /images/muk_900w.jpg 900w" media="--large")
               source(data-srcset="/images/muk_900w.jpg 900w")
-              img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
+              img.d-block.w-75.lazyload(data-src="holder.js/100px100p?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
             div.carousel-caption
-              h1(data-hook="outl-a.a")
-          div.item
+              h3(data-hook="outl-a.a")
+              a.btn.btn-info(href="schedule") See Availability
+          div.carousel-item
             picture
               source(data-srcset="/images/sun_200w.jpg 200w, /images/sun_300w.jpg 300w" media="--small")
               source(data-srcset="/images/sun_300w.jpg 300w, /images/sun_600w.jpg 600w" media="--medium")
               source(data-srcset="/images/sun_600w.jpg 600w, /images/sun_900w.jpg 900w" media="--large")
               source(data-srcset="/images/sun_900w.jpg 900w")
-              img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
+              img.d-block.w-75.lazyload(data-src="holder.js/100px100p?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
             div.carousel-caption
-              h1(data-hook="outl-a.b") Reconnect with your energy.  At your convenience, day...
-          div.item
+              h3(data-hook="outl-a.b")
+              a.btn.btn-info(href="schedule") See Availability
+          div.carousel-item
             picture
               source(data-srcset="/images/moon_200w.jpg 200w, /images/moon_300w.jpg 300w" media="--small")
               source(data-srcset="/images/moon_300w.jpg 300w, /images/moon_600w.jpg 600w" media="--medium")
               source(data-srcset="/images/moon_600w.jpg 600w, /images/moon_900w.jpg 900w" media="--large")
               source(data-srcset="/images/moon_900w.jpg 900w")
-              img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
+              img.d-block.w-75.lazyload(data-src="holder.js/100px100p?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
             div.carousel-caption
-              h1(data-hook="outl-a.c")
-  
-        a.left.carousel-control(href="#myCarousel", role="button", data-slide="prev")
-          span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+              h3(data-hook="outl-a.c")
+              a.btn.btn-info(href="schedule") See Availability
+
+        a.left.carousel-control-prev(href="#myCarousel" role="button")
+          span.fas.fa-chevron-left(aria-hidden="true")
           span.sr-only Previous
-        a.right.carousel-control(href="#myCarousel", role="button", data-slide="next")
-          span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+        a.right.carousel-control-next(href="#myCarousel" role="button")
+          span.fas.fa-chevron-right(aria-hidden="true")
           span.sr-only Next
       p &nbsp;
       ul
         li(data-hook="outl-a.d.0")
         li(data-hook="outl-a.d.1")
         li(data-hook="outl-a.d.2")
-  
+
   //- grid content
   div.container
     div.row
-      div.col-sm-4
-        picture
-          source(data-srcset="/images/pumpwater_64w.jpg 64w, /images/pumpwater_150w.jpg 150w" media="--small")
-          source(data-srcset="/images/pumpwater_150w.jpg 150w, /images/pumpwater_300w.jpg 300w" media="--medium")
-          source(data-srcset="/images/pumpwater_300w.jpg 300w")
-          img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        h3(data-hook="outl-b.a")
-        hr
-        p(data-hook="outl-b.b")
-        p(data-hook="outl-b.c")
-      div.col-sm-4
-        picture
-          source(data-srcset="/images/rocks_64w.jpg 64w, /images/rocks_150w.jpg 150w" media="--small")
-          source(data-srcset="/images/rocks_150w.jpg 150w, /images/rocks_300w.jpg 300w" media="--medium")
-          source(data-srcset="/images/rocks_300w.jpg 300w")
-          img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        h3(data-hook="outl-c.a")
-        hr
-        p(data-hook="outl-c.b")
-        p(data-hook="outl-c.c")
-        div
-          picture
-            source(data-hook="outl-c.d")
-            img.lazyload(data-src="holder.js/149x41?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        div
-          picture
-            source(data-hook="outl-c.e")
-            img.lazyload(data-src="holder.js/100x26?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-      div.col-sm-4
-        picture
-          source(data-srcset="/images/dogmassage_64w.jpg 64w, /images/dogmassage_150w.jpg 150w" media="--small")
-          source(data-srcset="/images/dogmassage_150w.jpg 150w, /images/dogmassage_300w.jpg 300w" media="--medium")
-          source(data-srcset="/images/dogmassage_300w.jpg 300w")
-          img.lazyload(data-src="holder.js/75px56p?theme=custom&font=Glyphicons Halflings&text=%EE%81%86&auto=yes" data-sizes="auto")
-        h3(data-hook="outl-d.a")
-        hr
-        p(data-hook="outl-d.b")
-        ul
-          li
-            span(data-hook="outl-e.a")
-            a(data-hook="outl-e.b")
-          li
-            span(data-hook="outl-e.c")
-            span(data-hook="outl-e.d")
+      div.col-md-4.col-sm-12
+        div.card
+          div.card-img-top
+            picture
+              source(data-srcset="/images/pumpwater_64w.jpg 64w, /images/pumpwater_150w.jpg 150w" media="--small")
+              source(data-srcset="/images/pumpwater_150w.jpg 150w, /images/pumpwater_300w.jpg 300w" media="--medium")
+              source(data-srcset="/images/pumpwater_300w.jpg 300w")
+              img.lazyload(data-src="holder.js/100px100p?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
+
+          div.card-body
+            h3.card-title(data-hook="outl-b.a")
+            p.card-text(data-hook="outl-b.b")
+            p.card-text(data-hook="outl-b.c")
+      div.col-md-4.col-sm-12
+        div.card
+          div.card-img-top
+            picture
+              source(data-srcset="/images/rocks_64w.jpg 64w, /images/rocks_150w.jpg 150w" media="--small")
+              source(data-srcset="/images/rocks_150w.jpg 150w, /images/rocks_300w.jpg 300w" media="--medium")
+              source(data-srcset="/images/rocks_300w.jpg 300w")
+              img.lazyload(data-src="holder.js/100px100p?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
+
+          div.card-body
+            h3.card-title(data-hook="outl-c.a")
+            p.card-text(data-hook="outl-c.b")
+            p.card-text(data-hook="outl-c.c")
+            div
+              picture
+                source(data-hook="outl-c.d")
+                img.lazyload(data-src="holder.js/149x41?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
+            div
+              picture
+                source(data-hook="outl-c.e")
+                img.lazyload(data-src="holder.js/100x26?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
+      div.col-md-4.col-sm-12
+        div.card
+          div.card-img-top
+            picture
+              source(data-srcset="/images/dogmassage_64w.jpg 64w, /images/dogmassage_150w.jpg 150w" media="--small")
+              source(data-srcset="/images/dogmassage_150w.jpg 150w, /images/dogmassage_300w.jpg 300w" media="--medium")
+              source(data-srcset="/images/dogmassage_300w.jpg 300w")
+              img.lazyload(data-src="holder.js/100px100p?theme=custom&text=%EF%80%B0&auto" data-sizes="auto")
+
+          div.card-body
+            h3.card-title(data-hook="outl-d.a")
+            p.card-text(data-hook="outl-d.b")
+            ul
+              li
+                span.card-text(data-hook="outl-e.a")
+                a(data-hook="outl-e.b")
+              li
+                span.card-text(data-hook="outl-e.c")
+                span.card-text(data-hook="outl-e.d")
