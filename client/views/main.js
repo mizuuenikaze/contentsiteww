@@ -38,15 +38,19 @@ module.exports = View.extend({
         this.pageSwitcher = new ViewSwitcher({
 			el: this.queryByHook('page-container'),
             show: function (newView, oldView) {
-                // it's inserted and rendered for me
-                document.title = _.result(newView, 'pageTitle') || 'massage';
-                document.scrollTop = 0;
+				if (newView.postRender) {
+					newView.postRender();
+				}
 
-                // add a class specifying it's active
-                dom.addClass(newView.el, 'active');
+				// it's inserted and rendered for me
+				document.title = _.result(newView, 'pageTitle') || 'massage';
+				document.scrollTop = 0;
 
-                // store an additional reference, just because
-                app.currentPage = newView;
+				// add a class specifying it's active
+				dom.addClass(newView.el, 'active');
+
+				// store an additional reference, just because
+				app.currentPage = newView;
 
 				// page is as fully rendered as possible
 				// if first load then get external scripts
@@ -63,13 +67,9 @@ module.exports = View.extend({
 						app.mainView.handleHolderJs();
 					}
 
-					if (window.Affix) {
+					if (window.BSN) {
 						app.mainView.handleBootstrapNative(app.mainView.el);
 					}
-				}
-
-				if (newView.postRender) {
-					newView.postRender();
 				}
             }
         });
@@ -91,7 +91,7 @@ module.exports = View.extend({
 				options.mainView.updateActiveNav();
 			},
 			error: function (model, response, options) {
-				options.pageView.errorMessage = response.rawRequest.responseText;
+				options.pageView.setErrorMessage(response.rawRequest.responseText);
 			}
 		});
     },
@@ -104,10 +104,10 @@ module.exports = View.extend({
 	},
 	handleBootstrapNative: function (el) {
 		if (el) {
-			this.updateBootstrapUi(el);
+			window.BSN.initCallback(el);
 		}
 
-		app.currentPage.binUiTo('bootstrap');
+		app.currentPage.bindUiTo('bootstrap');
 	},
 
     // Handles all `<a>` clicks in the app not handled
@@ -139,37 +139,5 @@ module.exports = View.extend({
                 dom.removeClass(aTag.parentNode, 'active');
             }
         });
-    },
-	updateBootstrapUi: function (root) {
-		var lookUp = root.getElementsByTagName('*');
-
-		if (!this.dataAttributes) {
-			this.dataAttributes = {
-				Affix: {cons: window.Affix, tag: 'data-spy'},
-				ScrollSpy: {cons: window.ScrollSpy, tag: 'data-spy'},
-				Carousel: {cons: window.Carousel, tag: 'data-ride'},
-				Alert: {cons: window.Alert, tag: 'data-dismiss'},
-				Button: {cons: window.Button, tag: 'data-toggle'},
-				Collapse: {cons: window.Collapse, tag: 'data-toggle'},
-				Dropdown: {cons: window.Dropdown, tag: 'data-toggle'},
-				Modal: {cons: window.Modal, tag: 'data-toggle'},
-				Popover: {cons: window.Popover, tag: 'data-toggle'},
-				Tab: {cons: window.Tab, tag: 'data-toggle'},
-				Tooltip: {cons: window.Tooltip, tag: 'data-toggle'}
-			};
-		}
-
-		_.forOwn(this.dataAttributes,
-			function(value, key) {
-				for (var i=0; i < lookUp.length; i++) {
-					var attrValue = lookUp[i].getAttribute(value.tag);
-					var expectedAttrValue = key.replace(/spy/i,'').toLowerCase();
-					if ( attrValue && key === 'Button' && ( attrValue.indexOf(expectedAttrValue) > -1 ) // data-toggle="buttons"
-						|| attrValue === expectedAttrValue ) { // all other components
-						new value.cons(lookUp[i]);
-					}
-				}
-			}
-		);
-	}
+    }
 });

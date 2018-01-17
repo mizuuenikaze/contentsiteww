@@ -1,5 +1,5 @@
 dnl Process this file with autoconf
-AC_INIT([contentsiteww], [1.3.1])
+AC_INIT([contentsiteww], [1.4.1])
 AC_PREREQ(2.69)
 AM_INIT_AUTOMAKE([foreign nostdinc])
 dnl Program checks

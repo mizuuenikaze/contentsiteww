@@ -1,13 +1,12 @@
 var PageView = require('./base');
 var templates = require('../templates');
-var _ = require('lodash');
 
 
 module.exports = PageView.extend({
 	pageTitle: 'massage',
 	template: templates.pages.massage,
 	cmsId:'7935738701a7401fa16227812d62ac52',
-	bindings: _.extend({}, PageView.prototype.bindings, {
+	bindings: {
 		'model.cms.page.a.a': {type: 'text', hook: 'outl-a.a'},
 		'model.cms.page.a.b': {type: 'text', hook: 'outl-a.b'},
 		'model.cms.page.a.c': {type: 'text', hook: 'outl-a.c'},
@@ -31,5 +30,5 @@ module.exports = PageView.extend({
 		],
 		'model.cms.page.e.c': {type: 'text', hook: 'outl-e.c'},
 		'model.cms.page.e.d': {type: 'text', hook: 'outl-e.d'}
-	})
+	}
 });

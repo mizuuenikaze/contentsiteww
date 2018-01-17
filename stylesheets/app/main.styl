@@ -7,6 +7,7 @@
 
 // your styles here:
 body
+  padding-top 60px
   color $text
   font-size $fontMD
 
@@ -15,7 +16,7 @@ body
   color $carouselText
 
 .carousel-inner
-  > .item
+  > .carousel-item
     img
       display block
       margin 0 auto
@@ -23,9 +24,6 @@ body
       min-height 150px
       max-width 100%
       min-width 25%
-    > .carousel-caption
-      text-align left
-      font-size $fontLG
 
 .lazyload
 .lazyloading
@@ -33,3 +31,7 @@ body
 .lazyloaded
   opacity 1
   transition opacity 1s ease 0s
+
+#calendar iframe
+  width 100%
+  height 600px
